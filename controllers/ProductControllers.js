@@ -43,24 +43,29 @@ export const getAllProducts = async (req, res) =>
 export const getLimitedProducts = async (req, res) =>
 {
       // destructure page and limit and set default values
-      const { page = 1, limit = 5 } = req.query;
+      const { page = 1, limit = 5 } = req.body;
   
       try {
         // execute query with page and limit values
-        const posts = await Products.find()
+        const product = await Products.find()
           .limit(limit * 1)
-          .skip((page - 1) * limit)
+          .skip((page - 1) * limit)  // 1-1*5=0 record skip, 2-1*5=5 records skip, 3-1*5=10 records skip
           .exec();
     
-        // get total documents in the Posts collection 
+        // get total documents in the product collection 
         const count = await Products.count();
     
-        // return response with posts, total pages, and current page
-        res.json({
-          posts,
-          totalPages: Math.ceil(count / limit),
-          currentPage: page
-        });
+        // return response with product, total pages, and current page
+        if(product[0]){
+            res.send({
+                product,
+                totalPages: Math.ceil(count / limit),
+                currentPage: page
+              });
+        }else{
+            return res.send("No more products here!")
+        }
+      
     }catch (error){
         return res.send(error)
     }
