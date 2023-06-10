@@ -1,4 +1,4 @@
-console.log("hiiiii");
+console.log("hiii");
 
 import express from "express";
 import morgan from "morgan";
@@ -20,3 +20,4 @@ mongoose.connect('mongodb+srv://mayuriyadav54:HGU1ZbJCNcqlTu0z@cluster0.s9gcceb.
 
 
 app.listen(3000, () => console.log("Working on port 3000")); // port
+

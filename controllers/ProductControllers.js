@@ -194,7 +194,7 @@ export const getAllProducts = async (req, res) => {
 
 
 
-//get limited (5) products
+//get limited (5) products (Pagination)
 
 export const getLimitedProducts = async (req, res) => {
     // destructure page and limit and set default values
