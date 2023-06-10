@@ -1,6 +1,7 @@
 import express from "express";
 import { addProduct, getAllProducts, getLimitedProducts, getProductsByBrand, getProductsByCategory, getProductsByColor,  getProductsByColorAndSize,  getProductsByFabric,  getProductsByPrice, getProductsBysize} from "../controllers/ProductControllers.js";
-import { login, register } from "../controllers/UsersControllers.js";
+import { login, register, updateUser } from "../controllers/UsersControllers.js";
+import { checkpin } from "../middlewares/authMiddleware.js";
 
 
 var router = express.Router();
@@ -17,7 +18,9 @@ router.get('/getProductsByBrand', getProductsByBrand);
 router.get('/getProductsByFabric', getProductsByFabric);
 router.get('/getProductsByColorAndSize', getProductsByColorAndSize);
 router.post('/register', register);
-router.post('/login', login);
+router.post('/login',checkpin,login);
+router.post('/updateUser', updateUser);
+
 
 
 
