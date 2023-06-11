@@ -1,5 +1,6 @@
 import UsersModal from "../modals/UsersModal.js";
 import encrypt from 'encryptjs';
+
 export const checkpin = async (req, res, next) => {
     try {
         const {email,pin } = req.body;

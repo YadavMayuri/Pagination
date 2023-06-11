@@ -23,6 +23,4 @@ router.post('/updateUser', updateUser);
 
 
 
-
-
 export default router;
